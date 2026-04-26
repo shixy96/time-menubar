@@ -1,6 +1,6 @@
 name: TimeMenubar
 options:
-  bundleIdPrefix: com.example
+  bundleIdPrefix: com.shixy
   deploymentTarget:
     macOS: "12.0"
   xcodeVersion: "15.0"
@@ -18,15 +18,65 @@ settings:
     DEVELOPMENT_TEAM: ""
 
 targets:
+  TimeMenubarCore:
+    type: framework
+    platform: macOS
+    sources:
+      - Sources/TimeZoneManager.swift
+      - Sources/Resources/TimeZones.plist
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_NAME: TimeMenubarCore
+        PRODUCT_MODULE_NAME: TimeMenubarCore
+        PRODUCT_BUNDLE_IDENTIFIER: com.shixy.TimeMenubarCore
+
   TimeMenubar:
     type: application
     platform: macOS
     sources:
-      - Sources
+      - path: Sources
+        excludes:
+          - TimeZoneManager.swift
+          - Resources/TimeZones.plist
+    dependencies:
+      - target: TimeMenubarCore
+        embed: true
     settings:
       base:
         INFOPLIST_FILE: Sources/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.TimeMenubar
+        PRODUCT_BUNDLE_IDENTIFIER: com.shixy.TimeMenubar
         LD_RUNPATH_SEARCH_PATHS: "@executable_path/../Frameworks"
         COMBINE_HIDPI_IMAGES: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+
+  TimeMenubarTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - Tests
+    dependencies:
+      - target: TimeMenubarCore
+    settings:
+      base:
+        BUNDLE_LOADER: ""
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_NAME: TimeMenubarTests
+        PRODUCT_MODULE_NAME: TimeMenubarTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.shixy.TimeMenubarTests
+        TEST_HOST: ""
+
+schemes:
+  TimeMenubar:
+    build:
+      targets:
+        TimeMenubar: all
+
+  TimeMenubarTests:
+    build:
+      targets:
+        TimeMenubarCore: all
+        TimeMenubarTests: [test]
+    test:
+      targets:
+        - TimeMenubarTests

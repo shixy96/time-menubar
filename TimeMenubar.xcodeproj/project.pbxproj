@@ -7,30 +7,110 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		802BB3ED7E16F0BBA3B08417 /* TimeZones.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6A250B18BA5BE538CF3F50A /* TimeZones.plist */; };
+		1C4CAB7A098288E569D6BD43 /* TimeMenubarCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5FF3FAE90978681F969BC9F6 /* TimeZones.plist in Resources */ = {isa = PBXBuildFile; fileRef = F45133C81BF35958887CDA99 /* TimeZones.plist */; };
 		84D67A9ADEA2EEC3D6785EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6718EACDC968A69ADE736 /* AppDelegate.swift */; };
 		AEB089726C54C74794F354BF /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F844CF5500F0F3A34223A /* StatusBarController.swift */; };
+		B7C9594C6AC75A757A85E725 /* TimeMenubarCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBD158E73D9461D6824DF6CF /* TimeMenubarCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */; };
 		CBF3946EB2B1C95D43C22D09 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B5A6736116E5DD5F72E0E7 /* main.swift */; };
-		D72EA8A5698F5F2CD903131C /* TimeZoneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095157139BC50D190DAC5BD /* TimeZoneManager.swift */; };
+		DDA5435F4DEEF6BB52D7694C /* TimeMenubarCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */; };
+		E81AAA559DA4C49A43485E0F /* TimeZoneManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFB4B7CEAA176CF13498E20 /* TimeZoneManagerTests.swift */; };
+		F1751370A253EFA22E0745D7 /* TimeZoneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095157139BC50D190DAC5BD /* TimeZoneManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		882546291522ED66153B2CA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6032DEC4B382F27FA5BD5D38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42AE56B71F0F4A0F838DE3DE;
+			remoteInfo = TimeMenubarCore;
+		};
+		8D49B6157F230E9DC37C3DE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6032DEC4B382F27FA5BD5D38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42AE56B71F0F4A0F838DE3DE;
+			remoteInfo = TimeMenubarCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3223468D2B34429DC9A31492 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1C4CAB7A098288E569D6BD43 /* TimeMenubarCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E193327DDF358CB396234FF0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B7C9594C6AC75A757A85E725 /* TimeMenubarCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		004F844CF5500F0F3A34223A /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TimeMenubarCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2095157139BC50D190DAC5BD /* TimeZoneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneManager.swift; sourceTree = "<group>"; };
+		5FFB4B7CEAA176CF13498E20 /* TimeZoneManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneManagerTests.swift; sourceTree = "<group>"; };
 		69167D5E6D413E605C91D82A /* TimeMenubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeMenubar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C6718EACDC968A69ADE736 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		97E565F08EF73D9B71EAC0DA /* TimeMenubarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeMenubarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B5A6736116E5DD5F72E0E7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		C6A250B18BA5BE538CF3F50A /* TimeZones.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = TimeZones.plist; sourceTree = "<group>"; };
 		D3F7C9720E467B14F80D1C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F45133C81BF35958887CDA99 /* TimeZones.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = TimeZones.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2E891F39A2DE5E50E2C3D463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA5435F4DEEF6BB52D7694C /* TimeMenubarCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A077EF2855BED2FB011DC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD158E73D9461D6824DF6CF /* TimeMenubarCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		4DBD877A4FAB3258195B91CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				69167D5E6D413E605C91D82A /* TimeMenubar.app */,
+				1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */,
+				97E565F08EF73D9B71EAC0DA /* TimeMenubarTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		78FBD9CA21D4E3B198610519 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F45133C81BF35958887CDA99 /* TimeZones.plist */,
+			);
+			name = Resources;
+			path = Sources/Resources;
 			sourceTree = "<group>";
 		};
 		995B0498EBF301F3B0EAB9AC /* Sources */ = {
@@ -41,23 +121,24 @@
 				B4B5A6736116E5DD5F72E0E7 /* main.swift */,
 				004F844CF5500F0F3A34223A /* StatusBarController.swift */,
 				2095157139BC50D190DAC5BD /* TimeZoneManager.swift */,
-				9B52BE9748AABC425AF1F927 /* Resources */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		9B52BE9748AABC425AF1F927 /* Resources */ = {
+		E2CA409A258348F795F989A3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C6A250B18BA5BE538CF3F50A /* TimeZones.plist */,
+				5FFB4B7CEAA176CF13498E20 /* TimeZoneManagerTests.swift */,
 			);
-			path = Resources;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		EEF89C68575D4B3E958CE959 = {
 			isa = PBXGroup;
 			children = (
+				78FBD9CA21D4E3B198610519 /* Resources */,
 				995B0498EBF301F3B0EAB9AC /* Sources */,
+				E2CA409A258348F795F989A3 /* Tests */,
 				4DBD877A4FAB3258195B91CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,16 +146,56 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		42AE56B71F0F4A0F838DE3DE /* TimeMenubarCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41CC02BC85C3AC9152851634 /* Build configuration list for PBXNativeTarget "TimeMenubarCore" */;
+			buildPhases = (
+				09B8DDA923B03D5C1FC28396 /* Sources */,
+				441616703C7554DEA8FE6597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimeMenubarCore;
+			packageProductDependencies = (
+			);
+			productName = TimeMenubarCore;
+			productReference = 1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		73791570BE957C23A57A0E8B /* TimeMenubarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71C1AD572CA48679109209BD /* Build configuration list for PBXNativeTarget "TimeMenubarTests" */;
+			buildPhases = (
+				9FF7A7EE7599976AB47B9B2D /* Sources */,
+				2E891F39A2DE5E50E2C3D463 /* Frameworks */,
+				E193327DDF358CB396234FF0 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D773025051D4C04FA4521549 /* PBXTargetDependency */,
+			);
+			name = TimeMenubarTests;
+			packageProductDependencies = (
+			);
+			productName = TimeMenubarTests;
+			productReference = 97E565F08EF73D9B71EAC0DA /* TimeMenubarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B81DC74680B3FA0D54280C05 /* TimeMenubar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52848CFC0E388AF0849053B3 /* Build configuration list for PBXNativeTarget "TimeMenubar" */;
 			buildPhases = (
 				97ACBA360F3ECD1ACE377EE7 /* Sources */,
-				CA1468BB7AF4BF385B0C964D /* Resources */,
+				84A077EF2855BED2FB011DC1 /* Frameworks */,
+				3223468D2B34429DC9A31492 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				013DDAB5D7FC6B67BF836290 /* PBXTargetDependency */,
 			);
 			name = TimeMenubar;
 			packageProductDependencies = (
@@ -92,6 +213,14 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					42AE56B71F0F4A0F838DE3DE = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					73791570BE957C23A57A0E8B = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
 					B81DC74680B3FA0D54280C05 = {
 						DevelopmentTeam = "";
 						ProvisioningStyle = Manual;
@@ -113,34 +242,64 @@
 			projectRoot = "";
 			targets = (
 				B81DC74680B3FA0D54280C05 /* TimeMenubar */,
+				42AE56B71F0F4A0F838DE3DE /* TimeMenubarCore */,
+				73791570BE957C23A57A0E8B /* TimeMenubarTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CA1468BB7AF4BF385B0C964D /* Resources */ = {
+		441616703C7554DEA8FE6597 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				802BB3ED7E16F0BBA3B08417 /* TimeZones.plist in Resources */,
+				5FF3FAE90978681F969BC9F6 /* TimeZones.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		09B8DDA923B03D5C1FC28396 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1751370A253EFA22E0745D7 /* TimeZoneManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97ACBA360F3ECD1ACE377EE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				84D67A9ADEA2EEC3D6785EA4 /* AppDelegate.swift in Sources */,
 				AEB089726C54C74794F354BF /* StatusBarController.swift in Sources */,
-				D72EA8A5698F5F2CD903131C /* TimeZoneManager.swift in Sources */,
 				CBF3946EB2B1C95D43C22D09 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9FF7A7EE7599976AB47B9B2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E81AAA559DA4C49A43485E0F /* TimeZoneManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		013DDAB5D7FC6B67BF836290 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42AE56B71F0F4A0F838DE3DE /* TimeMenubarCore */;
+			targetProxy = 882546291522ED66153B2CA9 /* PBXContainerItemProxy */;
+		};
+		D773025051D4C04FA4521549 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42AE56B71F0F4A0F838DE3DE /* TimeMenubarCore */;
+			targetProxy = 8D49B6157F230E9DC37C3DE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		07165C6D8FD7DE313DD988C3 /* Release */ = {
@@ -211,10 +370,35 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.TimeMenubar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixy.TimeMenubar;
 				SDKROOT = macosx;
 			};
 			name = Debug;
+		};
+		89F062CFB27E26D593F4A422 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixy.TimeMenubarCore;
+				PRODUCT_MODULE_NAME = TimeMenubarCore;
+				PRODUCT_NAME = TimeMenubarCore;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
 		};
 		A40E21588FE00CAE33135BC6 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -223,8 +407,71 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.TimeMenubar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixy.TimeMenubar;
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C0C84ECF265C02D9579F55C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixy.TimeMenubarTests;
+				PRODUCT_MODULE_NAME = TimeMenubarTests;
+				PRODUCT_NAME = TimeMenubarTests;
+				SDKROOT = macosx;
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
+		C88696E1254CAB2D82ECA482 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixy.TimeMenubarCore;
+				PRODUCT_MODULE_NAME = TimeMenubarCore;
+				PRODUCT_NAME = TimeMenubarCore;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		C918045181F84E643B38229F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shixy.TimeMenubarTests;
+				PRODUCT_MODULE_NAME = TimeMenubarTests;
+				PRODUCT_NAME = TimeMenubarTests;
+				SDKROOT = macosx;
+				TEST_HOST = "";
 			};
 			name = Release;
 		};
@@ -299,6 +546,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		41CC02BC85C3AC9152851634 /* Build configuration list for PBXNativeTarget "TimeMenubarCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C88696E1254CAB2D82ECA482 /* Debug */,
+				89F062CFB27E26D593F4A422 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		52848CFC0E388AF0849053B3 /* Build configuration list for PBXNativeTarget "TimeMenubar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -313,6 +569,15 @@
 			buildConfigurations = (
 				EACE207027B5F36BA06D43BD /* Debug */,
 				07165C6D8FD7DE313DD988C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		71C1AD572CA48679109209BD /* Build configuration list for PBXNativeTarget "TimeMenubarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0C84ECF265C02D9579F55C0 /* Debug */,
+				C918045181F84E643B38229F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
