@@ -93,14 +93,18 @@ final class StatusBarController {
 
     private func updateTimeDisplay() {
         let now = Date()
-        let primaryTime = manager.formatTime(now, in: manager.primaryTimeZone)
-        let secondaryTime = manager.formatTime(now, in: manager.secondaryTimeZone)
-
-        let primaryCode = manager.shortCode(for: manager.primaryTimeZone.identifier)
-        let secondaryCode = manager.shortCode(for: manager.secondaryTimeZone.identifier)
-
-        let displayText = "\(primaryCode) \(primaryTime) | \(secondaryCode) \(secondaryTime)"
-        statusItem.button?.title = displayText
+        var segments: [String] = []
+        if manager.showPrimary {
+            let time = manager.formatTime(now, in: manager.primaryTimeZone)
+            let code = manager.shortCode(for: manager.primaryTimeZone.identifier)
+            segments.append("\(code) \(time)")
+        }
+        if manager.showSecondary {
+            let time = manager.formatTime(now, in: manager.secondaryTimeZone)
+            let code = manager.shortCode(for: manager.secondaryTimeZone.identifier)
+            segments.append("\(code) \(time)")
+        }
+        statusItem.button?.title = segments.joined(separator: " | ")
     }
 
     private func startTimer() {
