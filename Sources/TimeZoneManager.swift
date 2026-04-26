@@ -1,15 +1,16 @@
 import Foundation
 
-struct TimeZoneGroup: Identifiable {
-    var id: String { region }
-    let region: String
-    let identifiers: [String]
+public struct TimeZoneGroup: Identifiable {
+    public var id: String { region }
+    public let region: String
+    public let identifiers: [String]
 }
 
-final class TimeZoneManager {
-    static let shared = TimeZoneManager()
+public final class TimeZoneManager {
+    public static let shared = TimeZoneManager()
 
-    private let userDefaults = UserDefaults.standard
+    private let userDefaults: UserDefaults
+    private let bundle: Bundle
     private let primaryTimeZoneKey = "primaryTimeZoneIdentifier"
     private let secondaryTimeZoneKey = "secondaryTimeZoneIdentifier"
     private let legacyPrimaryTimeZoneKey = "PrimaryTimeZone"
@@ -76,16 +77,23 @@ final class TimeZoneManager {
         "Pacific/Auckland": "Auckland",
     ]
 
-    private(set) var primaryTimeZone: TimeZone
-    private(set) var secondaryTimeZone: TimeZone
-    private(set) var showPrimary: Bool = true
-    private(set) var showSecondary: Bool = true
+    public private(set) var primaryTimeZone: TimeZone
+    public private(set) var secondaryTimeZone: TimeZone
+    public private(set) var showPrimary: Bool = true
+    public private(set) var showSecondary: Bool = true
 
-    private(set) var timeZoneGroups: [TimeZoneGroup] = []
+    public private(set) var timeZoneGroups: [TimeZoneGroup] = []
 
-    var onTimeZoneChanged: (() -> Void)?
+    public var onTimeZoneChanged: (() -> Void)?
 
-    private init() {
+    public convenience init() {
+        self.init(userDefaults: .standard)
+    }
+
+    init(userDefaults: UserDefaults, bundle: Bundle = Bundle(for: BundleLocator.self)) {
+        self.userDefaults = userDefaults
+        self.bundle = bundle
+
         let primaryIdentifier =
             userDefaults.string(forKey: primaryTimeZoneKey)
             ?? userDefaults.string(forKey: legacyPrimaryTimeZoneKey)
@@ -110,10 +118,14 @@ final class TimeZoneManager {
             userDefaults.object(forKey: showSecondaryTimeZoneKey) == nil
             ? true
             : userDefaults.bool(forKey: showSecondaryTimeZoneKey)
+        if !showPrimary && !showSecondary {
+            showPrimary = true
+            userDefaults.set(true, forKey: showPrimaryTimeZoneKey)
+        }
     }
 
     private func loadTimeZoneGroups() {
-        guard let url = Bundle.main.url(forResource: "TimeZones", withExtension: "plist"),
+        guard let url = bundle.url(forResource: "TimeZones", withExtension: "plist"),
             let data = try? Data(contentsOf: url),
             let plist = try? PropertyListSerialization.propertyList(from: data, format: nil)
                 as? [String: Any],
@@ -133,7 +145,7 @@ final class TimeZoneManager {
         }
     }
 
-    func setPrimaryTimeZone(_ identifier: String) {
+    public func setPrimaryTimeZone(_ identifier: String) {
         if let tz = TimeZone(identifier: identifier) {
             primaryTimeZone = tz
             userDefaults.set(identifier, forKey: primaryTimeZoneKey)
@@ -141,7 +153,7 @@ final class TimeZoneManager {
         }
     }
 
-    func setSecondaryTimeZone(_ identifier: String) {
+    public func setSecondaryTimeZone(_ identifier: String) {
         if let tz = TimeZone(identifier: identifier) {
             secondaryTimeZone = tz
             userDefaults.set(identifier, forKey: secondaryTimeZoneKey)
@@ -149,7 +161,7 @@ final class TimeZoneManager {
         }
     }
 
-    func setShowPrimary(_ visible: Bool) {
+    public func setShowPrimary(_ visible: Bool) {
         if !visible && !showSecondary { return }
         guard visible != showPrimary else { return }
         showPrimary = visible
@@ -157,7 +169,7 @@ final class TimeZoneManager {
         onTimeZoneChanged?()
     }
 
-    func setShowSecondary(_ visible: Bool) {
+    public func setShowSecondary(_ visible: Bool) {
         if !visible && !showPrimary { return }
         guard visible != showSecondary else { return }
         showSecondary = visible
@@ -165,21 +177,40 @@ final class TimeZoneManager {
         onTimeZoneChanged?()
     }
 
-    func displayName(for identifier: String) -> String {
+    public func displayName(for identifier: String) -> String {
+        displayName(for: identifier, at: Date())
+    }
+
+    public func displayName(for identifier: String, at date: Date) -> String {
         guard let tz = TimeZone(identifier: identifier) else {
             return identifier
         }
         let cityName = cityDisplayNames[identifier] ?? Self.cityName(from: identifier)
-        return "\(cityName) (\(utcOffset(for: tz)))"
+        return "\(cityName) (\(utcOffset(for: tz, at: date)))"
     }
 
-    func shortCode(for identifier: String) -> String {
+    public func shortCode(for identifier: String) -> String {
         shortCodes[identifier] ?? String(Self.cityName(from: identifier).prefix(3)).uppercased()
     }
 
-    func formatTime(_ date: Date, in timeZone: TimeZone) -> String {
+    public func menuBarTitle(at date: Date = Date()) -> String {
+        var segments: [String] = []
+        if showPrimary {
+            segments.append(menuBarSegment(for: primaryTimeZone, at: date))
+        }
+        if showSecondary {
+            segments.append(menuBarSegment(for: secondaryTimeZone, at: date))
+        }
+        return segments.joined(separator: " | ")
+    }
+
+    public func formatTime(_ date: Date, in timeZone: TimeZone) -> String {
         timeFormatter.timeZone = timeZone
         return timeFormatter.string(from: date)
+    }
+
+    private func menuBarSegment(for timeZone: TimeZone, at date: Date) -> String {
+        "\(shortCode(for: timeZone.identifier)) \(formatTime(date, in: timeZone))"
     }
 
     private func utcOffset(for timeZone: TimeZone, at date: Date = Date()) -> String {
@@ -209,3 +240,5 @@ final class TimeZoneManager {
             .replacingOccurrences(of: "_", with: " ") ?? identifier
     }
 }
+
+private final class BundleLocator: NSObject {}

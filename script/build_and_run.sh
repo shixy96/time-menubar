@@ -3,7 +3,7 @@ set -euo pipefail
 
 MODE="${1:-run}"
 APP_NAME="TimeMenubar"
-BUNDLE_ID="com.example.TimeMenubar"
+BUNDLE_ID="com.shixy.TimeMenubar"
 PROJECT="TimeMenubar.xcodeproj"
 SCHEME="TimeMenubar"
 CONFIGURATION="Debug"

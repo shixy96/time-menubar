@@ -29,7 +29,7 @@ A macOS menu-bar utility (`NSStatusItem`-based accessory app) written in Swift 5
 ## Menu-bar app constraints
 
 - `Sources/Info.plist` sets `LSUIElement=true`: the app has no Dock icon and no main window. All UI is exposed through `NSStatusItem`.
-- `Sources/Resources/TimeZones.plist` is loaded at runtime via `Bundle.main.url(forResource:withExtension:)`. **New resource files must be declared explicitly under `sources` in `project.yml`**, otherwise they will not be bundled into the target.
+- `Sources/Resources/TimeZones.plist` is bundled into `TimeMenubarCore` and loaded from the framework bundle. **New resource files must be declared explicitly under the owning target's `sources` in `project.yml`**, otherwise they will not be bundled into the target.
 - The clock refreshes every 60 seconds (minute-level display; no per-second timer needed).
 - Code signing is set to development mode (`CODE_SIGN_STYLE: Manual`, identity `-`). Release signing must be configured separately.
 
