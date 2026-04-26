@@ -33,6 +33,26 @@ final class StatusBarController {
     private func createMenu() -> NSMenu {
         let menu = NSMenu()
 
+        let showPrimaryItem = NSMenuItem(
+            title: "Show Primary",
+            action: #selector(togglePrimaryVisibility(_:)),
+            keyEquivalent: ""
+        )
+        showPrimaryItem.target = self
+        showPrimaryItem.state = manager.showPrimary ? .on : .off
+        menu.addItem(showPrimaryItem)
+
+        let showSecondaryItem = NSMenuItem(
+            title: "Show Secondary",
+            action: #selector(toggleSecondaryVisibility(_:)),
+            keyEquivalent: ""
+        )
+        showSecondaryItem.target = self
+        showSecondaryItem.state = manager.showSecondary ? .on : .off
+        menu.addItem(showSecondaryItem)
+
+        menu.addItem(NSMenuItem.separator())
+
         let timeZonesItem = NSMenuItem(title: "Time Zones", action: nil, keyEquivalent: "")
         timeZonesItem.submenu = createTimeZoneSubmenu()
         menu.addItem(timeZonesItem)
@@ -124,6 +144,26 @@ final class StatusBarController {
     @objc private func selectSecondaryTimeZone(_ sender: NSMenuItem) {
         guard let identifier = sender.representedObject as? String else { return }
         manager.setSecondaryTimeZone(identifier)
+    }
+
+    @objc private func togglePrimaryVisibility(_ sender: NSMenuItem) {
+        manager.setShowPrimary(!manager.showPrimary)
+    }
+
+    @objc private func toggleSecondaryVisibility(_ sender: NSMenuItem) {
+        manager.setShowSecondary(!manager.showSecondary)
+    }
+
+    @objc func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        switch menuItem.action {
+        case #selector(togglePrimaryVisibility(_:)):
+            // Disable when primary is the only visible segment.
+            return manager.showSecondary || !manager.showPrimary
+        case #selector(toggleSecondaryVisibility(_:)):
+            return manager.showPrimary || !manager.showSecondary
+        default:
+            return true
+        }
     }
 
     @objc private func quitApp() {
