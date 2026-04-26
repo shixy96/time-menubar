@@ -1,0 +1,16 @@
+.DS_Store
+.swiftpm/
+.build/
+DerivedData/
+build/
+dist/
+*.xcuserstate
+xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.app.zip
+
+.superpowers/brainstorm
