@@ -1,0 +1,33 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Lint Swift
+        run: xcrun swift-format lint --recursive Sources Tests
+
+      - name: Run unit tests
+        run: |
+          xcodebuild test \
+            -project TimeMenubar.xcodeproj \
+            -scheme TimeMenubarTests \
+            -configuration Debug \
+            -derivedDataPath build/DerivedData \
+            -destination 'platform=macOS'
