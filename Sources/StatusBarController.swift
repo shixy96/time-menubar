@@ -4,6 +4,7 @@ import TimeMenubarCore
 final class StatusBarController {
     private var statusItem: NSStatusItem!
     private var timer: Timer?
+    private var refreshCoordinator: WakeRefreshCoordinator?
 
     private let manager = TimeZoneManager.shared
 
@@ -17,6 +18,16 @@ final class StatusBarController {
             self?.updateTimeDisplay()
             self?.rebuildMenu()
         }
+
+        let coordinator = WakeRefreshCoordinator(subscriptions: [
+            (NSWorkspace.shared.notificationCenter, NSWorkspace.didWakeNotification),
+            (NotificationCenter.default, .NSSystemClockDidChange),
+        ])
+        coordinator.onRefresh = { [weak self] in
+            self?.updateTimeDisplay()
+            self?.startTimer()
+        }
+        refreshCoordinator = coordinator
     }
 
     private func setupStatusItem() {

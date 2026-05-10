@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1C4CAB7A098288E569D6BD43 /* TimeMenubarCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2FCC65CE75F00CACA23282A9 /* WakeRefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D628616FCD79CC522008AE36 /* WakeRefreshCoordinator.swift */; };
 		5FF3FAE90978681F969BC9F6 /* TimeZones.plist in Resources */ = {isa = PBXBuildFile; fileRef = F45133C81BF35958887CDA99 /* TimeZones.plist */; };
+		6ECDAA7B5A95C85C9E7FD451 /* WakeRefreshCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FD9C00C7221917C92B82EA /* WakeRefreshCoordinatorTests.swift */; };
 		84D67A9ADEA2EEC3D6785EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6718EACDC968A69ADE736 /* AppDelegate.swift */; };
 		AEB089726C54C74794F354BF /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F844CF5500F0F3A34223A /* StatusBarController.swift */; };
 		B7C9594C6AC75A757A85E725 /* TimeMenubarCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F18EA4F95C722BC460387 /* TimeMenubarCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -71,7 +73,9 @@
 		97E565F08EF73D9B71EAC0DA /* TimeMenubarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeMenubarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B5A6736116E5DD5F72E0E7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D3F7C9720E467B14F80D1C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D628616FCD79CC522008AE36 /* WakeRefreshCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeRefreshCoordinator.swift; sourceTree = "<group>"; };
 		F45133C81BF35958887CDA99 /* TimeZones.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = TimeZones.plist; sourceTree = "<group>"; };
+		F7FD9C00C7221917C92B82EA /* WakeRefreshCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeRefreshCoordinatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				B4B5A6736116E5DD5F72E0E7 /* main.swift */,
 				004F844CF5500F0F3A34223A /* StatusBarController.swift */,
 				2095157139BC50D190DAC5BD /* TimeZoneManager.swift */,
+				D628616FCD79CC522008AE36 /* WakeRefreshCoordinator.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				5FFB4B7CEAA176CF13498E20 /* TimeZoneManagerTests.swift */,
+				F7FD9C00C7221917C92B82EA /* WakeRefreshCoordinatorTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1751370A253EFA22E0745D7 /* TimeZoneManager.swift in Sources */,
+				2FCC65CE75F00CACA23282A9 /* WakeRefreshCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E81AAA559DA4C49A43485E0F /* TimeZoneManagerTests.swift in Sources */,
+				6ECDAA7B5A95C85C9E7FD451 /* WakeRefreshCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

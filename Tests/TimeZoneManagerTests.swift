@@ -183,10 +183,74 @@ final class TimeZoneManagerTests: XCTestCase {
         )
     }
 
-    private func makeUTCDate(year: Int, month: Int, day: Int) -> Date {
+    func testLegacyPrimaryAndSecondaryKeysAreReadWhenModernKeysAbsent() {
+        userDefaults.set("Europe/London", forKey: "PrimaryTimeZone")
+        userDefaults.set("Asia/Tokyo", forKey: "SecondaryTimeZone")
+
+        let manager = TimeZoneManager(userDefaults: userDefaults)
+
+        XCTAssertEqual(manager.primaryTimeZone.identifier, "Europe/London")
+        XCTAssertEqual(manager.secondaryTimeZone.identifier, "Asia/Tokyo")
+    }
+
+    func testModernKeysTakePrecedenceOverLegacyKeys() {
+        userDefaults.set("Europe/London", forKey: "PrimaryTimeZone")
+        userDefaults.set("Asia/Tokyo", forKey: "SecondaryTimeZone")
+        userDefaults.set("Europe/Paris", forKey: "primaryTimeZoneIdentifier")
+        userDefaults.set("Asia/Seoul", forKey: "secondaryTimeZoneIdentifier")
+
+        let manager = TimeZoneManager(userDefaults: userDefaults)
+
+        XCTAssertEqual(manager.primaryTimeZone.identifier, "Europe/Paris")
+        XCTAssertEqual(manager.secondaryTimeZone.identifier, "Asia/Seoul")
+    }
+
+    func testFortyFiveMinuteOffsetIsFormattedWithMinutes() {
+        let manager = TimeZoneManager(userDefaults: userDefaults)
+        let date = makeUTCDate(year: 2024, month: 6, day: 1)
+
+        XCTAssertEqual(
+            manager.displayName(for: "Asia/Kathmandu", at: date),
+            "Kathmandu (UTC+5:45)"
+        )
+    }
+
+    func testDisplayNameReflectsDSTOffsetOnTransitionDay() {
+        let manager = TimeZoneManager(userDefaults: userDefaults)
+        // 2024-03-10 in America/Los_Angeles: clocks jump 02:00 PST → 03:00 PDT.
+        let beforeTransition = makeUTCDate(year: 2024, month: 3, day: 10, hour: 9)  // 01:00 PST
+        let afterTransition = makeUTCDate(year: 2024, month: 3, day: 10, hour: 11)  // 04:00 PDT
+
+        XCTAssertEqual(
+            manager.displayName(for: "America/Los_Angeles", at: beforeTransition),
+            "Los Angeles (UTC-8)"
+        )
+        XCTAssertEqual(
+            manager.displayName(for: "America/Los_Angeles", at: afterTransition),
+            "Los Angeles (UTC-7)"
+        )
+    }
+
+    func testMissingTimeZonesPlistLeavesGroupsEmptyAndDoesNotCrash() {
+        let bundleWithoutPlist = Bundle(for: TimeZoneManagerTests.self)
+
+        let manager = TimeZoneManager(userDefaults: userDefaults, bundle: bundleWithoutPlist)
+
+        XCTAssertTrue(manager.timeZoneGroups.isEmpty)
+        XCTAssertEqual(manager.primaryTimeZone.identifier, "Asia/Shanghai")
+        XCTAssertEqual(manager.secondaryTimeZone.identifier, "America/Los_Angeles")
+    }
+
+    private func makeUTCDate(year: Int, month: Int, day: Int, hour: Int = 0) -> Date {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-        let components = DateComponents(calendar: calendar, year: year, month: month, day: day)
+        let components = DateComponents(
+            calendar: calendar,
+            year: year,
+            month: month,
+            day: day,
+            hour: hour
+        )
         return components.date!
     }
 
