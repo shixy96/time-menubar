@@ -23,6 +23,7 @@ targets:
     platform: macOS
     sources:
       - Sources/TimeZoneManager.swift
+      - Sources/WakeRefreshCoordinator.swift
       - Sources/Resources/TimeZones.plist
     settings:
       base:
@@ -38,6 +39,7 @@ targets:
       - path: Sources
         excludes:
           - TimeZoneManager.swift
+          - WakeRefreshCoordinator.swift
           - Resources/TimeZones.plist
     dependencies:
       - target: TimeMenubarCore
